@@ -57,11 +57,13 @@ body {
   }
   
   .operations {
-    max-height: 400px;
+    max-height: 90%;
+    min-height: 400px;
     overflow-y: auto;
     padding-right: 5px;
     scrollbar-width: thin;
-    scrollbar-color: #52dd52 transparent;
+    scrollbar-color: #ffffff24  transparent;
+    text-wrap: nowrap;
   }
   
   .operations::-webkit-scrollbar {

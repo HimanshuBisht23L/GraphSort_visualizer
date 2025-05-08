@@ -1,11 +1,29 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
-import ProjectPage from "./components/ProjectPage.jsx";
+import Graphviso from "./components/GraphViso.jsx";
+import Homepage from "./components/Homepage.jsx";
+import SortingViso from "./components/SortingViso.jsx";
 
-function Project(){
+function GraphViso(){
   return (
     <>
-      <ProjectPage/>
+      <Graphviso/>
+    </>
+  )
+}
+
+function HomePage(){
+  return (
+    <>
+      <Homepage/>
+    </>
+  )
+}
+
+function Sortingviso(){
+  return (
+    <>
+      <SortingViso/>
     </>
   )
 }
@@ -14,7 +32,9 @@ function App()  {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Project />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/Graph" element={<GraphViso />} />
+        <Route path="/Sorting" element={<Sortingviso />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,162 @@
+.container {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #eef2f3, #cfd9df);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.canvas {
+  height: 73vh;
+  width: 95vw; 
+  max-width: 1400px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  background: white;
+}
+
+.controls {
+  background: #f1f3f6;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.controls form input {
+  height: 2rem;
+  width: 100px;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.controls button {
+  border: none;
+  padding: 10px 18px;
+  background: #d72e33;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 12px;
+  font-size: 1rem;
+  box-shadow: 0px 2px 6px rgba(50, 50, 50, 0.2);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.controls button:hover {
+  cursor: pointer;
+  background: #e2db13;
+  box-shadow: 0px 4px 12px rgba(50, 50, 50, 0.4);
+  transform: translateY(-2px);
+}
+
+.controls button[data-clicked='true'] {
+  background: #0b28c9;
+}
+
+.controls button:focus {
+  outline: none;
+}
+
+.left {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.right form label {
+  padding: 0 10px 0 0;
+}
+
+.start-node {
+  height: 2rem;
+  width: 100px;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.selectbtns {
+  border-radius: 10px;
+  padding: .6rem .4rem;
+  color: white;
+  background: #d72e33;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  transition: all .3s ease-in-out;
+}
+
+.selectbtns:hover {
+  cursor: pointer;
+  background: #e2db13;
+  box-shadow: 0px 4px 12px rgba(50, 50, 50, 0.4);
+  transform: translateY(-2px);
+}
+
+.selectbtns option {
+  background: #d72e33;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .canvas {
+    width: 95vw;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .controls form input {
+    width: 100%;
+  }
+
+  .left, .right {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .canvas {
+    height: 60vh;
+    width: 95vw;
+  }
+
+  .controls {
+    padding: 15px;
+  }
+
+  .controls button,
+  .selectbtns,
+  .start-node {
+    width: 100%;
+    max-width: 250px;
+  }
+}

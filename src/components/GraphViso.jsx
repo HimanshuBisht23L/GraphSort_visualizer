@@ -178,7 +178,7 @@ export default function ProjectPage() {
         const cnva = canva.current;
         let ptr = cnva.getContext("2d");
         ptr.clearRect(0, 0, cnva.width, cnva.height);
-        navigate("/");
+        navigate("/Test");
     }
 
 

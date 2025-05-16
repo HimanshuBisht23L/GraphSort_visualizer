@@ -11,8 +11,10 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  padding: 18px;
   gap: 20px;
+  color: black;
+  height: 100vh;
 }
 
 .canvas1 {

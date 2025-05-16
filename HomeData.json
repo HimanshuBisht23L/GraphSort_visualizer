@@ -1,0 +1,32 @@
+[
+    {
+        "imgURL" : "/Images/testImg.jpg",
+        "Name" : "Himanshu Bisht",
+        "Roll_Number" : "2318862",
+        "University" : "Graphic Era Hill University",
+        "Section" : "I2"
+    },
+
+    {
+        "imgURL" : "/Images/testImg.jpg",
+        "Name" : "Ashok Kumawat",
+        "Roll_Number" : "3532523",
+        "University" : "Graphic Era Hill University",
+        "Section" : "I2"
+    },
+    {
+        "imgURL" : "/Images/testImg.jpg",
+        "Name" : "Jatin Chand",
+        "Roll_Number" : "3532523",
+        "University" : "Graphic Era Hill University",
+        "Section" : "I2"
+    },
+    {
+        "imgURL" : "/Images/testImg.jpg",
+        "Name" : "Rahul Rawat",
+        "Roll_Number" : "3532523",
+        "University" : "Graphic Era Hill University",
+        "Section" : "B2"
+    }
+   
+]

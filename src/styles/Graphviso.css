@@ -149,7 +149,6 @@ body {
 
 @media (max-width: 1024px) {
   .container1 {
-    flex-direction: column;
     align-items: center;
   }
 

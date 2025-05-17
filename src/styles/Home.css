@@ -210,7 +210,6 @@ body {
 }
 
 .card-box {
-  /* width: 80%; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -232,7 +231,7 @@ body {
 
 
 .card:hover {
-  box-shadow: 0 0 35px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 35px rgb(255 255 255 / 54%);
 }
 
 
@@ -263,23 +262,24 @@ body {
 
 
 @media (max-width: 1440px) {
-  .home-conatiner{
+  .home-conatiner {
     padding: 0 10rem;
   }
 }
 
 @media (max-width: 1300px) {
   .home-conatiner {
-      padding: 0 5rem;
+    padding: 0 5rem;
   }
 }
 
 @media (max-width: 1125px) {
-  .about-Attack > h1{
+  .about-Attack>h1 {
     font-size: 2.5rem;
   }
 
-  .attack-1 > h1 , .attack-2 > h1{
+  .attack-1>h1,
+  .attack-2>h1 {
     font-size: 24px;
   }
 }
@@ -289,7 +289,7 @@ body {
     font-size: 2.5rem;
   }
 
-  .title p{
+  .title p {
     font-size: 1.5rem;
     padding-left: 4px;
   }
@@ -297,21 +297,21 @@ body {
 }
 
 @media (max-width: 1024px) {
-  .about-Attack{
+  .about-Attack {
     padding: 9rem 6rem;
   }
 
-  .prevent-box{
+  .prevent-box {
     padding: 9em 0em;
   }
-} 
+}
 
 @media (max-width: 900px) {
   .title h1 {
     font-size: 2.2rem;
   }
 
-  .title p{
+  .title p {
     font-size: 1.2rem;
     padding-left: 4px;
   }
@@ -319,12 +319,13 @@ body {
 }
 
 @media (max-width: 815px) {
-    .about-Attack h1{
-      font-size: 2.2rem;
-    }
+  .about-Attack h1 {
+    font-size: 2.2rem;
+  }
 
-    .attack-1 > h1, .attack-2 > h1 {
-      font-size: 22px;
+  .attack-1>h1,
+  .attack-2>h1 {
+    font-size: 22px;
   }
 }
 
@@ -333,16 +334,16 @@ body {
     font-size: 2rem;
   }
 
-  .prevent-content h1{
+  .prevent-content h1 {
     font-size: 36px;
   }
 
-  .title p{
+  .title p {
     font-size: 1rem;
     padding-left: 2px;
   }
 
-  .home-conatiner img{
+  .home-conatiner img {
     width: 25vh;
     height: auto;
   }
@@ -351,11 +352,13 @@ body {
     font-size: 2rem;
   }
 
-  .attack-1 > h1, .attack-2 > h1 {
+  .attack-1>h1,
+  .attack-2>h1 {
     font-size: 20px;
   }
 
-  .attack-1 > p, .attack-2 > p {
+  .attack-1>p,
+  .attack-2>p {
     font-size: medium;
   }
 }
@@ -366,15 +369,15 @@ body {
 
 @media (max-width: 660px) {
   .home-conatiner {
-      padding: 0 3rem;
-      gap: 3rem;
+    padding: 0 3rem;
+    gap: 3rem;
   }
-  
-  .user-content h1{
+
+  .user-content h1 {
     font-size: 36px;
   }
 
-  .user-card{
+  .user-card {
     padding: 5rem 3rem;
   }
 }
@@ -382,66 +385,69 @@ body {
 @media (max-width: 640px) {
   .about-Attack {
     padding: 6rem 4rem;
-  } 
+  }
+
   .about-Attack h1 {
     font-size: 1.8rem;
   }
 
-  .attack-1 > h1, .attack-2 > h1 {
+  .attack-1>h1,
+  .attack-2>h1 {
     font-size: 18px;
   }
 
-  .attack-1 > p, .attack-2 > p {
+  .attack-1>p,
+  .attack-2>p {
     font-size: 15px;
   }
 }
 
-@media (max-width:584px){
+@media (max-width:584px) {
   .about-Attack {
     padding: 4rem 1rem;
   }
 
-  .prevent-content h1{
+  .prevent-content h1 {
     font-size: 30px;
   }
 
-  .context-attack{
+  .context-attack {
     display: block;
   }
 
-  .attack-1{
+  .attack-1 {
     padding: 0 0 2.5rem 0;
   }
 
-  .diffline{
+  .diffline {
     display: none;
   }
 }
 
 @media (max-width: 515px) {
-  .about-Attack{
+  .about-Attack {
     padding: 3rem 1rem;
     gap: 3rem;
   }
 
-  .home-conatiner{
+  .home-conatiner {
     flex-direction: column;
     justify-content: space-around;
   }
 
-  .home-conatiner img{
+  .home-conatiner img {
     width: 40vh;
     height: auto;
   }
 
-  
+
 }
 
 
 @media (max-width: 475px) {
   .home-conatiner {
-      padding: 0 1rem;
-      gap: 3rem;
+    padding: 0 1rem;
+    gap: 3rem;
   }
 }
 
@@ -450,10 +456,10 @@ body {
     font-size: 2.2rem;
   }
 
-  .title p{
+  .title p {
     font-size: .9rem;
     padding-left: 4px;
-  } 
+  }
 
   .home-conatiner img {
     width: 40vh;
@@ -464,19 +470,20 @@ body {
 
 @media (max-width: 320px) {
   .home-conatiner {
-      padding: 0 .2rem;
-      gap: 3rem;
+    padding: 0 .2rem;
+    gap: 3rem;
   }
+
   .title h1 {
     font-size: 1.4rem;
   }
 
-  .title p{
+  .title p {
     font-size: .7rem;
     padding-left: 3px;
-  } 
+  }
 
-  .home-conatiner img{
+  .home-conatiner img {
     width: 35vh;
     height: auto;
   }

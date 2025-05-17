@@ -42,7 +42,11 @@
 }
 
 .nav-links li a:hover {
-  color: #00cc88;
+  color: #005dff;
+}
+
+.nav-links li a.highlight {
+  color: #005dff;
 }
 
 .nav-links li a::after {
@@ -52,13 +56,19 @@
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: #00cc88;
+  background-color: #005dff;
   transition: width 0.4s ease-in-out;
 }
+
 
 .nav-links li a:hover::after {
   width: 100%;
 }
+
+.nav-links li a.highlight::after {
+  width: 100%;
+}
+
 
 .nav-buttons {
   display: flex;
@@ -67,7 +77,7 @@
 
 .hamburger {
   display: none;
-  color: #00cc88;
+  color: black;
 }
 
 .heading-close {
@@ -115,7 +125,7 @@
   }
 
   .heading-open h2 {
-    color: #00cc88;
+    color: #005dff;
   }
 
   .mobile-ham li {
@@ -138,7 +148,7 @@
   }
 
   .mobile-ham li a:hover {
-    color: #00cc88;
+    color: #005dff;
   }
 }
 

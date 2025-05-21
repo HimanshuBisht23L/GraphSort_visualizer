@@ -44,11 +44,13 @@ export default function Navebar() {
 
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-            <div className="logo" onClick={() => navigate("/")}>Cyber Ai</div>
+            <div className="logo" onClick={() => navigate("/")}>
+               <img style={{ height: '40px', width: '40px' }} src="/favicon_io/favicon-32x32.png" alt="" />
+            </div>
             <div className="nav-buttons">
                 <ul className={hamb ? `mobile-ham ${popup ? 'Active' : ''}` : "nav-links"}>
                     <div className={hamb ? "heading-open" : "heading-close"}>
-                        <h2>Cyber Ai</h2>
+                        <h2>LvV</h2>
                         <svg onClick={closeNavbar} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" color="#005dff" fill="none">
                             <path d="M19.0005 4.99988L5.00049 18.9999M5.00049 4.99988L19.0005 18.9999"
                                 stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />

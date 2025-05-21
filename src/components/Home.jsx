@@ -11,8 +11,8 @@ export default function Home() {
         <div className="sub-main">
           <div className="home-conatiner">
             <div className="title">
-              <h1>Cross Site Scripting-Attack</h1>
-              <p className='main-p'>Identify Attack By <span className='movementtext'> Cyber Ai</span></p>
+              <h1>Learn Through Visuzlize</h1>
+              <p className='main-p'>Easy to Learn  <span className='movementtext'> Graphs/Sorting </span></p>
             </div>
             <img src="/Images/img.png" alt="Loading.." />
           </div>
@@ -20,20 +20,19 @@ export default function Home() {
 
         <div className="about-Attack">
 
-          <h1>🔐 Common Web Vulnerabilities</h1>
+          <h1>Visualizing Works?</h1>
           <div className="context-attack">
             <div className="attack-1">
-              <h1>XSS (Cross-Site Scripting) Attack</h1>
-              <p>Cross-Site Scripting (XSS) is a vulnerability found in web applications where attackers inject malicious scripts into trusted websites. When unsuspecting users visit the infected page, the script runs in their browser — potentially exposing sensitive data such as cookies, session tokens, or login details.
-                XSS targets the user's trust in a website, leading to data theft, session hijacking, or defacement.</p>
+              <h1>Graph's Visualising</h1>
+              <p>A Graph Visualizer provides a graphical interface to create and explore graphs composed of nodes (vertices) and edges. It allows users to interactively add nodes, connect them, and run algorithms like Depth-First Search (DFS), Breadth-First Search (BFS), or Dijkstra’s shortest path. These visual tools are valuable for understanding how graph algorithms traverse or analyze network structures in real time, enhancing learning through clear, dynamic representation.</p>
             </div>
 
             <div className='diffline'></div>
 
             <div className="attack-2">
-              <h1>SQL Injection (SQLi) Attack</h1>
-              <p>SQL Injection is a critical vulnerability that occurs when an attacker inserts malicious SQL queries into user input fields — such as login forms or search bars. If the input is not properly sanitized, it can directly interact with the database.
-                This can allow attackers to bypass authentication, read sensitive data, delete records, or even take full control of the database.</p>
+              <h1>Sorting Visualising</h1>
+              <p>
+                A Sorting Visualizer is an interactive tool designed to visually demonstrate how various sorting algorithms work, such as Bubble Sort, Merge Sort, Quick Sort, and Insertion Sort. By animating the step-by-step comparisons, swaps, and placements of elements, it helps users intuitively understand the inner mechanics of each algorithm. It’s especially useful for students and developers who want to grasp time and space complexity through visual learning.</p>
             </div>
           </div>
 
@@ -41,19 +40,19 @@ export default function Home() {
 
         <div className='prevent-box'>
           <div className='prevent-content'>
-            <h1>How We Secure Your Inputs?</h1>
+            <h1>How We Do Visualize?</h1>
             <ul class="protection-list">
               <li>
-                <strong>Layer 1: Trie-Based Detection</strong><br />
-                Scans input for known attack signatures like SQLi or XSS using pattern matching. Fast and lightweight.
+                <strong>Task 1: Graph Visualizer</strong><br />
+                Enables users to create vertices and connect edges in a user-friendly environment, then apply graph algorithms (such as DFS, BFS) to understand graph traversal concepts.
               </li>
               <li>
-                <strong>Layer 2: Grammar-Based FSM Validation</strong><br />
-                Validates SQL and JavaScript input structure using Finite State Machines to detect malformed or suspicious logic.
+                <strong>Task 2: Sorting Visualizer</strong><br />
+                Provides an interactive interface where users can visualize how different sorting algorithms (like Bubble Sort, Merge Sort, Quick Sort, etc.) operate step-by-step, helping to build intuition about time complexity and algorithm behavior.
               </li>
               <li>
-                <strong>Layer 3: ML Heuristic Classifier</strong><br />
-                Uses machine learning with features like entropy, token frequency, and structure to detect complex or obfuscated attacks.
+                <strong>Task 3: Step-by-Step Visualizing</strong><br />
+                Displays algorithm operations in a sequential, animated manner to clearly illustrate each step in the process, making it easier for users to follow and understand algorithm logic and flow.
               </li>
             </ul>
           </div>

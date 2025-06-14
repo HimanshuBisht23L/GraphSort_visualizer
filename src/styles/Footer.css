@@ -67,10 +67,14 @@ footer a:hover {
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 361px) {
   .foot-cont {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
+  }
+
+  .foot-cont img{
+    display: none;
   }
 }

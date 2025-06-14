@@ -32,6 +32,7 @@
   gap: 30px;
 }
 
+
 .nav-links li a {
   text-decoration: none;
   color: #222;
@@ -39,6 +40,7 @@
   transition: color 0.3s ease;
   position: relative;
   padding-bottom: 3px;
+  cursor: pointer;
 }
 
 .nav-links li a:hover {
@@ -122,6 +124,10 @@
     display: flex;
     justify-content: space-between;
     margin: 0 2rem;
+  }
+
+  .heading-open img{
+      margin-left: 1rem;
   }
 
   .heading-open h2 {

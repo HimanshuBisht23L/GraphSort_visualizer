@@ -1,10 +1,9 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import "../styles/Navebar.css"
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 export default function Navebar() {
 
-    // const [active, setactive] = useState("home");
     const [hamb, changehamb] = useState(false);
     const [popup, changepopup] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -42,22 +41,33 @@ export default function Navebar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+
+    const handleAboutClick = () => {
+        if (location.pathname === '/') {
+            const el = document.getElementById("about");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        } else {
+            navigate("/", { state: { scrollToAbout: true } });
+        }
+    };
+
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="logo" onClick={() => navigate("/")}>
-               <img style={{ height: '40px', width: '40px' }} src="/favicon_io/favicon-32x32.png" alt="" />
+                <img style={{ height: '40px', width: '40px' }} src="/favicon_io/favicon-32x32.png" alt="" />
             </div>
             <div className="nav-buttons">
                 <ul className={hamb ? `mobile-ham ${popup ? 'Active' : ''}` : "nav-links"}>
                     <div className={hamb ? "heading-open" : "heading-close"}>
-                        <h2>LvV</h2>
+                        <img style={{ height: '40px', width: '40px' }} src="/favicon_io/favicon-32x32.png" alt="" />
                         <svg onClick={closeNavbar} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" color="#005dff" fill="none">
                             <path d="M19.0005 4.99988L5.00049 18.9999M5.00049 4.99988L19.0005 18.9999"
                                 stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
                     <li><Link className={location.pathname === "/" ? "highlight" : ""} to="/">Home</Link></li>
-                    <li><Link className={location.pathname === "/Test" ? "highlight" : ""} to="/Test">Test</Link></li>
+                    <li><a onClick={handleAboutClick} >About</a></li>
+                    <li><Link className={location.pathname === "/Test" ? "highlight" : ""} to="/Test">Try</Link></li>
                 </ul>
 
                 <svg onClick={Show_Nav_Links} className='hamburger' xmlns="http://www.w3.org/2000/svg"

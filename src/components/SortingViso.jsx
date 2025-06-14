@@ -1,220 +1,257 @@
-import React, { useRef, useState, useEffect } from 'react'
-import '../styles/SortingViso.css'
+import { useRef, useState, useEffect } from 'react';
+import '../styles/SortingViso.css';
 import { useNavigate } from 'react-router-dom';
+import { BubbleSort } from './Algorithms/BubbleSort.jsx'
+import { SelectionSort } from './Algorithms/SelectionSort.jsx'
+import { InsertionSort } from './Algorithms/InsertionSort.jsx'
+import { QuickSort } from './Algorithms/QuickSort.jsx';
+import { MergeSort } from './Algorithms/MergeSort.jsx';
 
 export default function SortingViso() {
-
-
-    const canva = useRef(null)
-    const AddOutput = useRef(null);
-    const [whichOut, setWhichOut] = useState(false)
-    const [startAddVtx, stopAddVtx] = useState(false)
-    const [Vertix_data, updateWord] = useState("Add Vertex")
-    const [startVal, setStartVal] = useState("")
-
-    const [addedge, setaddedge] = useState(false)
+    const canva = useRef(null);
+    const [startVal, setStartVal] = useState("");
+    const [circleArray, setCircleArray] = useState([]);
     const [edges, setedges] = useState([]);
-    const [selectedVertix, setSelectedVertix] = useState([])
+    const [whichSort, setWhichsort] = useState("BubbleSort");
+    const [running, setrunning] = useState(false);
+    const [deleteMode, setDeleteMode] = useState(false);
+    const abortSort = useRef(false);
+    const navigate = useNavigate();
 
-    const [circleArray, setCircleArray] = useState([])
-    const [Adjlist, setAdjList] = useState({})
-
-    function Circle(id, x, y, radius, color) {
-        this.color = color
-        this.id = id
-        this.x = x
-        this.y = y
-        this.radius = radius
-
-        this.draw = (ptr) => {
-            ptr.beginPath();
-            ptr.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-            ptr.fillStyle = this.color
-            ptr.fill()
-            ptr.stroke()
-
-            ptr.fillStyle = "white";
-            ptr.font = "20px Arial";
-            ptr.textAlign = "center";
-            ptr.textBaseline = "middle";
-            ptr.fillText(this.id, this.x, this.y);
-        }
-    }
-
-    function ConnectLine(startCircle, endCircle) {
-        this.start = startCircle;
-        this.end = endCircle;
-
-        this.draw = (ptr) => {
-            ptr.beginPath();
-            ptr.moveTo(this.start.x, this.start.y);
-            ptr.lineTo(this.end.x, this.end.y);
-            ptr.stroke();
+    function Circle(id, x, y, radius, color, textColor) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.textColor = textColor;
+        this.draw = (ctx) => {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = this.textColor;
+            ctx.font = "20px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(this.id, this.x, this.y);
         };
     }
 
+
     const DrawCanvas = () => {
-        const cnva = canva.current
-        const ptr = cnva.getContext("2d")
+        const canvas = canva.current;
+        const ctx = canvas.getContext("2d");
+        canvas.width = canvas.getBoundingClientRect().width;
+        canvas.height = canvas.getBoundingClientRect().height;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        edges.forEach(edge => edge.draw(ctx));
+        circleArray.forEach(circle => circle.draw(ctx));
+    };
 
-        cnva.width = cnva.getBoundingClientRect().width;
-        cnva.height = cnva.getBoundingClientRect().height;
-
-        // Clear Cnava
-        ptr.clearRect(0, 0, cnva.width, cnva.height);
-
-        edges.forEach(edge => edge.draw(ptr));
-        // let i = 0;
-        circleArray.forEach(circle => circle.draw(ptr));
-    }
-
-    const getCircle = (e) => {
-        const cnva = canva.current;
-        const rect = cnva.getBoundingClientRect();
-
-        const xpos = e.clientX - rect.left;
-        const ypos = e.clientY - rect.top;
-
-        if (addedge) {
-            const clickedCircle = circleArray.find((circle) => {
-                let cx = xpos - circle.x;
-                let cy = ypos - circle.y;
-                return Math.sqrt(cx * cx + cy * cy) <= circle.radius;
-            });
-
-            if (clickedCircle) {
-                const selection = [...selectedVertix, clickedCircle];
-                setSelectedVertix(selection)
-
-                if (selection.length === 2) {
-                    const newline = new ConnectLine(selection[0], selection[1]);
-                    const Newedge = [...edges, newline]
-                    setedges(Newedge);
-                    setSelectedVertix([]);
-
-
-                    // Add Element to Adjlist
-                    let a = selection[0].id
-                    let b = selection[1].id
-
-                    function adjlistadd(prev, a, b) {
-                        const updatedAdjlist = { ...prev }
-                        if (!updatedAdjlist[a]) updatedAdjlist[a] = []
-                        if (!updatedAdjlist[b]) updatedAdjlist[b] = []
-                        updatedAdjlist[a].push(b)
-                        updatedAdjlist[b].push(a)
-                        return updatedAdjlist;
-                    }
-                    setAdjList(prev => adjlistadd(prev, a, b))
-                }
-            }
-        } else if (startAddVtx) {
-            //This is the value of Nodes
-            let id = circleArray.length
-            let color = "black"
-            let circle = new Circle(id, xpos, ypos, 25, color)
-            const newCircle = [...circleArray, circle]
-            setCircleArray(newCircle)
-        }
-    }
-
-    //redraw state when updates is hapenning on rerender
     useEffect(() => {
         DrawCanvas();
     }, [circleArray, edges]);
 
     const Make_Vertex = () => {
-        if (addedge === true) {
-            setaddedge(!addedge);
-        }
+        setDeleteMode(false)
+        if (!startVal) return;
 
-        if (startAddVtx === true) {
-            updateWord("Add Vertex")
-        } else {
-            updateWord("Stop Adding")
-        }
-        stopAddVtx(!startAddVtx);
-    }
 
-    const Add_edge = () => {
-        if (startAddVtx === false && addedge === false || addedge === true && startAddVtx === false) {
-            setaddedge(!addedge);
+        if (circleArray.length >= 14) {
+            alert("You Can't Add More")
             return;
         }
 
-        if (startAddVtx === true && addedge === false) {
-            stopAddVtx(!startAddVtx);
-            setaddedge(!addedge);
-            updateWord("Add Vertex");
-        } else {
-            stopAddVtx(!startAddVtx);
-            updateWord("Stop Adding");
-        }
-    }
+        const canvas = canva.current;
+        const rect = canvas.getBoundingClientRect();
+
+        const updatedArray = [...circleArray, new Circle(startVal, 0, 0, 30, "black", "white")]; // temporary x/y
+
+        const spacing = 100;
+        const totalWidth = (updatedArray.length - 1) * spacing;
+        const startX = (rect.width - totalWidth) / 2;
+        const centerY = rect.height / 2;
+
+        updatedArray.forEach((circle, i) => {
+            circle.x = startX + i * spacing;
+            circle.y = centerY;
+        });
+
+        setCircleArray(updatedArray);
+        setStartVal("");
+    };
+
+
+    useEffect(() => {
+        const canvas = canva.current;
+        if (!canvas) return;
+
+        const handleClick = (e) => {
+            if (!deleteMode) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Find if any circle is clicked
+            const clickedIndex = circleArray.findIndex(circle => {
+                const dx = mouseX - circle.x;
+                const dy = mouseY - circle.y;
+                return Math.sqrt(dx * dx + dy * dy) <= circle.radius;
+            });
+
+            if (clickedIndex !== -1) {
+                const updatedCircles = [...circleArray];
+                updatedCircles.splice(clickedIndex, 1);
+                setCircleArray(updatedCircles);
+                setDeleteMode(false);
+            }
+        };
+
+        canvas.addEventListener("click", handleClick);
+        return () => canvas.removeEventListener("click", handleClick);
+    }, [deleteMode, circleArray]);
+
+
 
 
     const clearTheCanva = () => {
-        setaddedge(false)
-        stopAddVtx(false);
-        setCircleArray([])
-        setedges([])
-        setWhichOut(false)
-        AddOutput.current.innerHTML = "";
-        const cnva = canva.current;
-        let ptr = cnva.getContext("2d");
-        ptr.clearRect(0, 0, cnva.width, cnva.height);
+        abortSort.current = true;
+        setCircleArray([]);
+        setedges([]);
+        const ctx = canva.current.getContext("2d");
+        ctx.clearRect(0, 0, canva.current.width, canva.current.height);
+    };
+
+    const goback = () => {
+        clearTheCanva();
+        navigate("/Test");
+    };
+
+
+
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+    const moveCircle = (circle, targetX, duration = 300) => {
+        return new Promise((resolve) => {
+            const startTime = performance.now();
+            const startX = circle.x;
+
+            const animate = (currentTime) => {
+
+                if (abortSort.current) return;
+
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                circle.x = startX + (targetX - startX) * progress;
+
+                setCircleArray(prev => [...prev]); // re-render
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    resolve();
+                }
+            };
+
+            requestAnimationFrame(animate);
+        });
     };
 
 
 
 
-    const navigate = useNavigate();
-    const goback = () => {
-        setaddedge(false)
-        stopAddVtx(false);
-        setCircleArray([])
-        setedges([])
-        setWhichOut(false)
-        const cnva = canva.current;
-        let ptr = cnva.getContext("2d");
-        ptr.clearRect(0, 0, cnva.width, cnva.height);
-        navigate("/Test");
+    const AnimateSort = async () => {
+        console.log("Selected Sort:", whichSort);
+
+        if (running) {
+            return;
+        }
+
+        abortSort.current = false;
+
+        setrunning(true);
+        if (whichSort == "BubbleSort") {
+            await BubbleSort(circleArray, setCircleArray, canva, moveCircle, sleep, abortSort);
+        }
+        else if (whichSort == "SelectionSort") {
+            await SelectionSort(circleArray, setCircleArray, canva, moveCircle, sleep, abortSort);
+        }
+        else if (whichSort == "InsertionSort") {
+            await InsertionSort(circleArray, setCircleArray, canva, moveCircle, sleep, abortSort);
+        }
+        else if (whichSort == "QuickSort") {
+            await QuickSort(circleArray, setCircleArray, canva, moveCircle, sleep, abortSort);
+        }
+        else if (whichSort == "MergeSort") {
+            await MergeSort(circleArray, setCircleArray, canva, moveCircle, sleep, abortSort);
+        }
+        setrunning(false);
+
+
     }
+
 
 
 
     return (
         <div className="container">
-
-            <canvas ref={canva} onClick={getCircle} className="canvas" style={{ border: "1px solid #000000" }} />
-
+            <canvas
+                ref={canva}
+                className="canvas"
+                style={{ border: "1px solid #000" }}
+            />
             <div className="controls">
                 <h2>Controls</h2>
-
                 <div className="right">
-                    <form>
-                        <label><b>Starting Node</b></label>
-                        <input type="number" className="start-node" onChange={(e) => { setStartVal(e.target.value) }} value={startVal} />
+                    <form onSubmit={(e) => e.preventDefault()}>
+                        <label><b>Add Number</b></label>
+                        <input
+                            type="number"
+                            className="start-node"
+                            max={99999}
+                            onChange={(e) => {
+                                if (e.target.value.length <= 5) setStartVal(e.target.value);
+                            }}
+
+                            value={startVal}
+                            placeholder="Enter node value"
+                            onKeyDown={(e) => {
+                                e.key == "Enter" ? Make_Vertex() : ""
+                            }}
+                        />
                     </form>
                 </div>
-
                 <div className="left">
-                    <button onClick={Make_Vertex} className="vertexButton" data-clicked="false">{Vertix_data}</button>
-                    <button onClick={Add_edge} className="edgeButton" data-clicked="false">{!addedge ? "Add Edge" : "Stop Edge"}</button>
-                    
-                    <select name="sortings" className='selectbtns'>
-                        <option value="Bubble">BubbleSort</option>
-                        <option value="Insertion">InsertionSort</option>
-                        <option value="Selection">SelectionSort</option>
-                        <option value="QuickSort">QuickSort</option>
-                        <option value="CountSort">CountSort</option>
-                    </select>
+                    <button onClick={Make_Vertex} className="vertexButton">Add Node</button>
 
+                    <button
+                        onClick={() => {
+                            circleArray.length === 0 ? undefined : setDeleteMode(prev => !prev)
+                        }}
+                        className={`deleteBTN ${deleteMode ? "active" : ""}`}
+                    >
+                        {deleteMode ? "Cancel Delete" : "Delete Node"}
+                    </button>
+
+
+                    <select
+                        name="sortings"
+                        className="selectbtns"
+                        onChange={(e) => setWhichsort(e.target.value)}
+                    >
+                        <option value="BubbleSort">BubbleSort</option>
+                        <option value="InsertionSort">InsertionSort</option>
+                        <option value="SelectionSort">SelectionSort</option>
+                        <option value="QuickSort">QuickSort</option>
+                        <option value="MergeSort">MergeSort</option>
+                    </select>
+                    <button onClick={AnimateSort} className="runBTN">Start</button>
                     <button onClick={clearTheCanva} className="clearCanvas">Clear Canvas</button>
                     <button onClick={goback} className="goback">Back</button>
                 </div>
-
             </div>
         </div>
-    )
+    );
 }

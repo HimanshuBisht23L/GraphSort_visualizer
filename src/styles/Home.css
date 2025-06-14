@@ -46,6 +46,30 @@ body {
   }
 }
 
+
+.title button {
+  padding: .5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+  >a {
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.title button:hover {
+  background-color: #3227ab;
+
+  >a {
+    color: white;
+  }
+}
+
 .title h1 {
   font-size: xxx-large;
   font-family: 'Poppins', sans-serif;

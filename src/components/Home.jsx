@@ -1,9 +1,20 @@
 import '../styles/Home.css'
 import HomeData from "../../HomeData.json"
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function Home() {
 
+  const location = useLocation();
 
+  useEffect(() => {
+    if (location.state?.scrollToAbout) {
+      const el = document.getElementById("about");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
     <>
@@ -13,6 +24,7 @@ export default function Home() {
             <div className="title">
               <h1>Learn Through Visuzlize</h1>
               <p className='main-p'>Easy to Learn  <span className='movementtext'> Graphs/Sorting </span></p>
+              <button><a href="#about">Learn More</a></button>
             </div>
             <img src="/Images/img.png" alt="Loading.." />
           </div>
@@ -59,7 +71,7 @@ export default function Home() {
         </div>
 
 
-        <div className="user-card">
+        <div className="user-card" id='about' >
 
           <div className="user-content">
             <h1>Meet the Contributors</h1>

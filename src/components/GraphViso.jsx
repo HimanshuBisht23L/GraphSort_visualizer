@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import '../styles/Graphviso.css'
 import { useNavigate } from 'react-router-dom';
 import { runBFS, runDFS } from './Algorithms/DFS_BFS.jsx';
@@ -215,20 +215,22 @@ export default function ProjectPage() {
 
     return (
         <div className="container1">
+            <div className='sub-cont'>
+                <canvas ref={canva} onClick={getCircle} className="canvas1" style={{ border: "1px solid #000000" }} />
 
-            <canvas ref={canva} onClick={getCircle} className="canvas1" style={{ border: "1px solid #000000" }} />
 
-            <div className="display-panel">
-                <div className="top-panel">
-                    <h1>Operations</h1>
-                    <h1>
-                        Mode: <span className="mode-name">{addedge ? "Add Edge" : startAddVtx ? "Add Vertex" : "Pointer"}</span>
-                    </h1>
+                <div className="display-panel">
+                    <div className="top-panel">
+                        <h1>Operations</h1>
+                        <h1>
+                            Mode: <span className="mode-name">{addedge ? "Add Edge" : startAddVtx ? "Add Vertex" : "Pointer"}</span>
+                        </h1>
+                    </div>
+                    <div ref={AddOutput} className="operations"></div>
+
                 </div>
-                <div ref={AddOutput} className="operations"></div>
 
             </div>
-
             <div className="controls1">
                 <h2>Controls</h2>
 

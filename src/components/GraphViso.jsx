@@ -18,6 +18,7 @@ export default function ProjectPage() {
 
     const [circleArray, setCircleArray] = useState([])
     const [Adjlist, setAdjList] = useState({})
+    const abortTraversal = useRef(false);
 
 
     function Circle(id, x, y, radius, color) {
@@ -155,6 +156,7 @@ export default function ProjectPage() {
 
 
     const clearTheCanva = () => {
+        abortTraversal.current = true;
         setaddedge(false)
         stopAddVtx(false);
         setCircleArray([])
@@ -170,6 +172,7 @@ export default function ProjectPage() {
 
     const navigate = useNavigate();
     const goback = () => {
+        clearTheCanva();
         setaddedge(false)
         stopAddVtx(false);
         setCircleArray([])
@@ -178,13 +181,13 @@ export default function ProjectPage() {
         const cnva = canva.current;
         let ptr = cnva.getContext("2d");
         ptr.clearRect(0, 0, cnva.width, cnva.height);
-        navigate("/Test");
+        navigate("/visualize");
     }
 
 
 
     /////////////////////////////////////////// Graphs ////////////////////////////////////////////////////////
-    const DFS = (key) => {
+    const DFS = async (key) => {
         stopAddVtx(false)
         setaddedge(false)
 
@@ -193,11 +196,13 @@ export default function ProjectPage() {
             return
         }
 
-        runDFS(AddOutput, circleArray, setCircleArray, DrawCanvas, Adjlist, key)
+        abortTraversal.current = false;
+
+        await runDFS(AddOutput, circleArray, setCircleArray, DrawCanvas, Adjlist, key, abortTraversal)
     }
 
 
-    const BFS = (Key) => {
+    const BFS = async (Key) => {
         stopAddVtx(false)
         setaddedge(false)
 
@@ -206,7 +211,9 @@ export default function ProjectPage() {
             return
         }
 
-        runBFS(AddOutput, circleArray, setCircleArray, DrawCanvas, Adjlist, Key)
+        abortTraversal.current = false;
+
+        await runBFS(AddOutput, circleArray, setCircleArray, DrawCanvas, Adjlist, Key, abortTraversal)
     }
 
 

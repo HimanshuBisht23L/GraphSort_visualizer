@@ -14,7 +14,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d0d0d0;
+  background-color: white;
   color: black;
 }
 
@@ -54,6 +54,7 @@ body {
   margin-top: 8px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  background-color: #0ccbff80;
   
   >a {
     transition: all 0.2s ease-in-out;
@@ -63,7 +64,7 @@ body {
 }
 
 .title button:hover {
-  background-color: #3227ab;
+  background-color: #0c85ff;
 
   >a {
     color: white;
@@ -93,7 +94,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 3em;
-  background: #888888;
+  background: #006581bf;
   padding: 9rem 12rem;
 }
 
@@ -150,7 +151,7 @@ body {
 
 
 .prevent-box {
-  background-color: #d0d0d0;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,7 +210,7 @@ body {
 }
 
 .user-card {
-  background: #888888;
+  background: #006581bf;
   padding: 9rem 16rem;
 }
 

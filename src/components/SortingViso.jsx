@@ -127,7 +127,7 @@ export default function SortingViso() {
 
     const goback = () => {
         clearTheCanva();
-        navigate("/Test");
+        navigate("/visualize");
     };
 
 

@@ -48,9 +48,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/Test" element={<TestPage />} />
-        <Route path="/Graph" element={<GraphViso />} />
-        <Route path="/Sorting" element={<Sortingviso />} />
+        <Route path="/visualize" element={<TestPage />} />
+        <Route path="/visualize/Graph" element={<GraphViso />} />
+        <Route path="/visualize/Sorting" element={<Sortingviso />} />
       </Routes>
     </BrowserRouter>
   );

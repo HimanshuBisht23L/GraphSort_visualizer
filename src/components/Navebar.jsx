@@ -43,6 +43,10 @@ export default function Navebar() {
 
 
     const handleAboutClick = () => {
+        changehamb(!hamb);
+        setTimeout(() => {
+            changepopup(!popup);
+        }, 1);
         if (location.pathname === '/') {
             const el = document.getElementById("about");
             if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -67,7 +71,7 @@ export default function Navebar() {
                     </div>
                     <li><Link className={location.pathname === "/" ? "highlight" : ""} to="/">Home</Link></li>
                     <li><a onClick={handleAboutClick} >About</a></li>
-                    <li><Link className={location.pathname === "/Test" ? "highlight" : ""} to="/Test">Try</Link></li>
+                    <li><Link className={location.pathname === "/visualize" ? "highlight" : ""} to="/visualize">Visualize</Link></li>
                 </ul>
 
                 <svg onClick={Show_Nav_Links} className='hamburger' xmlns="http://www.w3.org/2000/svg"

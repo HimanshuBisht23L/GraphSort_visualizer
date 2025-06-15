@@ -1,109 +1,103 @@
+export const runDFS = async (AddOutput, circleArray, setCircleArray, DrawCanvas, Adjlist, key, abortTraversal) => {
+    if (abortTraversal.current) return;
 
-export const runDFS = async (AddOutput, circleArray, setCircleArray, DrawCanvas, Adjlist, key) => {
     let visited = new Array(circleArray.length).fill(false);
-    let result = []
+    let result = [];
 
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-    // Reject No need 
-    const delay = (ms) => new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve()
-        }, ms);
-    });
+    AddOutput.current.innerHTML += `<br><br><span style="font-size: large; font-weight: bold; margin: 12px;">DFS : </span>`;
 
-    // Set Heading of Algorithm
-    AddOutput.current.innerHTML += `<br><br><span style="font-size: large; font-weight: bold; margin: 12px;" >DFS : </span>`;
-
-
-    // Main DFS code
     const DFSCode = async (node) => {
+        if (abortTraversal.current) return;
         visited[node] = true;
-        result.push(node)
+        result.push(node);
 
         for (let i = 0; i < circleArray.length; i++) {
-            if (parseInt(circleArray[i].id) == node) {
-                circleArray[i].color = "green"
-                setCircleArray([...circleArray])
-                DrawCanvas()
-                await delay(1000)
+            if (abortTraversal.current) return;
+            if (parseInt(circleArray[i].id) === node) {
+                circleArray[i].color = "green";
+                setCircleArray([...circleArray]);
+                DrawCanvas();
+                await delay(1000);
+                if (abortTraversal.current) return;
 
-
-                // Adding Output in Operation Box
                 if (AddOutput.current) {
                     AddOutput.current.innerHTML += `<span style="font-weight: bold; font-size: large; margin: 12px;">${node}</span>`;
                 }
 
-                circleArray[i].color = "black"
-                setCircleArray([...circleArray])
-                DrawCanvas()
+                circleArray[i].color = "black";
+                setCircleArray([...circleArray]);
+                DrawCanvas();
                 break;
             }
-
         }
 
-        for (const element of (Adjlist[node] || [])) {
-            if (!visited[element]) {
-                await DFSCode(element)
+        // Sorting neighbors before recursive call
+        for (const neighbor of [...(Adjlist[node] || [])].sort((a, b) => a - b)) {
+            if (abortTraversal.current) return;
+            if (!visited[neighbor]) {
+                await DFSCode(neighbor);
             }
         }
-    }
+    };
 
-    DFSCode(parseInt(key))
-    console.log(result)
+    await DFSCode(parseInt(key));
+    console.log("DFS Result:", result);
 };
 
-export const runBFS = async (AddOutput, circleArray, setCircleArray, DrawCanvas, Adjlist, Key) => {
-    let visited = new Array(circleArray.length).fill(false)
-    let result = []
+export const runBFS = async (AddOutput, circleArray, setCircleArray, DrawCanvas, Adjlist, Key, abortTraversal) => {
+    if (abortTraversal.current) return;
 
-    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+    let visited = new Array(circleArray.length).fill(false);
+    let result = [];
 
-    // Set Heading of Algorithm
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
     AddOutput.current.innerHTML += `<br><br><span style="font-size: large; font-weight: bold; margin: 12px;">BFS : </span>`;
 
-
     const BFSCode = async (startNode) => {
-        let queue = []
-        queue.push(startNode)
-        visited[startNode] = true
+        if (abortTraversal.current) return;
+        let queue = [];
+        queue.push(startNode);
+        visited[startNode] = true;
 
         while (queue.length > 0) {
-            let node = queue.shift()
-            result.push(node)
+            if (abortTraversal.current) return;
+            let node = queue.shift();
+            result.push(node);
 
-            // Visualize Current Node
             for (let i = 0; i < circleArray.length; i++) {
+                if (abortTraversal.current) return;
                 if (parseInt(circleArray[i].id) === node) {
-                    circleArray[i].color = "blue"
-                    setCircleArray([...circleArray])
-                    DrawCanvas()
-                    await delay(1000)
+                    circleArray[i].color = "blue";
+                    setCircleArray([...circleArray]);
+                    DrawCanvas();
+                    await delay(1000);
+                    if (abortTraversal.current) return;
 
-                    // Output
                     if (AddOutput.current) {
                         AddOutput.current.innerHTML += `<span style="font-weight: bold; font-size: large; margin: 12px;">${node}</span>`;
                     }
 
-                    circleArray[i].color = "black"
-                    setCircleArray([...circleArray])
-                    DrawCanvas()
-                    break
+                    circleArray[i].color = "black";
+                    setCircleArray([...circleArray]);
+                    DrawCanvas();
+                    break;
                 }
             }
 
-            // Enqueue Neighbors
-            for (const neighbor of (Adjlist[node] || [])) {
+            // Sorting neighbors before enqueue
+            for (const neighbor of [...(Adjlist[node] || [])].sort((a, b) => a - b)) {
+                if (abortTraversal.current) return;
                 if (!visited[neighbor]) {
-                    queue.push(neighbor)
-                    visited[neighbor] = true
+                    queue.push(neighbor);
+                    visited[neighbor] = true;
                 }
             }
         }
-    }
+    };
 
-    BFSCode(parseInt(Key))
-    console.log(result)
+    await BFSCode(parseInt(Key));
+    console.log("BFS Result:", result);
 };
-
-
-

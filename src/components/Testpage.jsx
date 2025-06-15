@@ -13,8 +13,8 @@ export default function TestPage() {
         </div>
 
         <div className="visoBtn">
-          <button onClick={() => navigate('/Graph')}>Graph Visualizer</button>
-          <button onClick={() => navigate('/Sorting')}>Sorting Visualizer</button>
+          <button onClick={() => navigate('/visualize/Graph')}>Graph Visualizer</button>
+          <button onClick={() => navigate('/visualize/Sorting')}>Sorting Visualizer</button>
         </div>
       </div>
     </div>

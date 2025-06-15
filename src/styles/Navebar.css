@@ -4,7 +4,8 @@
   align-items: center;
   padding: 15px 16em;
   background: #fefefe;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); */
+  box-shadow: 0 -5px 15px rgb(29 176 255 / 81%);
   position: sticky;
   top: 0;
   z-index: 999;

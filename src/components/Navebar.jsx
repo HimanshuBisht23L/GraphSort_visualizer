@@ -43,11 +43,11 @@ export default function Navebar() {
 
 
     const handleAboutClick = () => {
-        changehamb(!hamb);
-        setTimeout(() => {
-            changepopup(!popup);
-        }, 1);
         if (location.pathname === '/') {
+            changehamb(false);
+            setTimeout(() => {
+                changepopup(!popup);
+            }, 1);
             const el = document.getElementById("about");
             if (el) el.scrollIntoView({ behavior: "smooth" });
         } else {

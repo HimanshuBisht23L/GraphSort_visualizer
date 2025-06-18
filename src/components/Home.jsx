@@ -22,8 +22,8 @@ export default function Home() {
         <div className="sub-main">
           <div className="home-conatiner">
             <div className="title">
-              <h1>Learn Through Visuzlize</h1>
-              <p className='main-p'>Easy to Learn  <span className='movementtext'> Graphs/Sorting </span></p>
+              <h1>Learn Through Visualize</h1>
+              <p className='main-p'>Easy to Learn  <span className='movementtext'> Graphs/Sortings </span></p>
               <button><a href="#about">Learn More</a></button>
             </div>
             <img src="/Images/img.png" alt="Loading.." />
@@ -42,7 +42,7 @@ export default function Home() {
             <div className='diffline'></div>
 
             <div className="attack-2">
-              <h1>Sorting Visualising</h1>
+              <h1>Sorting's Visualising</h1>
               <p>
                 A Sorting Visualizer is an interactive tool designed to visually demonstrate how various sorting algorithms work, such as Bubble Sort, Merge Sort, Quick Sort, and Insertion Sort. By animating the step-by-step comparisons, swaps, and placements of elements, it helps users intuitively understand the inner mechanics of each algorithm. It’s especially useful for students and developers who want to grasp time and space complexity through visual learning.</p>
             </div>

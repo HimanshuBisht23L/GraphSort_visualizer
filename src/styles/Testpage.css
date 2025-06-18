@@ -1,0 +1,79 @@
+.main-box {
+  min-height: 80vh;
+  background: linear-gradient(135deg, #f5f7fa, #e4ecf4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.sub-box {
+  width: 100%;
+  max-width: 850px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.Page-head h1 {
+  font-size: 2.7rem;
+  color: #343a40;
+  margin-bottom: 0.8rem;
+}
+
+.para-data {
+  font-size: 1.15rem;
+  color: #6c757d;
+}
+
+.visoBtn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.visoBtn button {
+  padding: 0.9rem 2.2rem;
+  border-radius: 12px;
+  border: 2px solid #00ff88;
+  font-size: 1.05rem;
+  background-color: white;
+  color: #00cc77;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 255, 136, 0.1);
+}
+
+.visoBtn button:hover {
+  background-color: #00ff88;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 255, 136, 0.3);
+}
+
+.visoBtn button:active {
+  transform: scale(0.96);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .Page-head h1 {
+    font-size: 2rem;
+  }
+
+  .para-data {
+    font-size: 1rem;
+  }
+
+  .visoBtn button {
+    width: 100%;
+    max-width: 250px;
+  }
+}

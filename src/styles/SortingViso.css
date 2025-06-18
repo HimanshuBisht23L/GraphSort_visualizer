@@ -11,12 +11,12 @@
   align-items: center;
   padding: 20px;
   gap: 20px;
+  height: 100vh;
 }
 
 .canvas {
-  height: 73vh;
-  width: 95vw; 
-  max-width: 1400px;
+  height: 100%;
+  width: 100%;
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   background: white;
@@ -33,6 +33,7 @@
   align-items: center;
   gap: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .controls form input {
@@ -42,6 +43,7 @@
   padding-left: 10px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  text-overflow: ellipsis;
 }
 
 .controls button {
@@ -114,6 +116,12 @@
   background: #d72e33;
 }
 
+.deleteBTN.active {
+  background-color: red;
+  color: white;
+}
+
+
 /* Responsive Design */
 
 @media (max-width: 1024px) {
@@ -136,7 +144,8 @@
     width: 100%;
   }
 
-  .left, .right {
+  .left,
+  .right {
     flex-direction: column;
     align-items: center;
     width: 100%;

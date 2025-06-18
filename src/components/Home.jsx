@@ -22,37 +22,37 @@ export default function Home() {
         <div className="sub-main">
           <div className="home-conatiner">
             <div className="title">
-              <h1>Learn Through Visuzlize</h1>
-              <p className='main-p'>Easy to Learn  <span className='movementtext'> Graphs/Sorting </span></p>
-              <button><a href="#about">Learn More</a></button>
+              <h1>Learn Through Visualize</h1>
+              <p className='main-p'>Easy to Learn  <span className='movementtext'> Graphs/Sortings </span></p>
+              <button><a href="#Learn">Learn More</a></button>
             </div>
             <img src="/Images/img.png" alt="Loading.." />
           </div>
         </div>
 
-        <div className="about-Attack">
+        <div className="about-Attack " id='about'>
 
           <h1>Visualizing Works?</h1>
           <div className="context-attack">
             <div className="attack-1">
               <h1>Graph's Visualising</h1>
-              <p>A Graph Visualizer provides a graphical interface to create and explore graphs composed of nodes (vertices) and edges. It allows users to interactively add nodes, connect them, and run algorithms like Depth-First Search (DFS), Breadth-First Search (BFS), or Dijkstra’s shortest path. These visual tools are valuable for understanding how graph algorithms traverse or analyze network structures in real time, enhancing learning through clear, dynamic representation.</p>
+              <p>A Graph Visualizer provides a graphical interface to create and explore graphs composed of nodes (vertices) and edges. It allows users to interactively add nodes, connect them, and run algorithms like Depth-First Search (DFS), Breadth-First Search (BFS). These visual tools are valuable for understanding how graph algorithms traverse or analyze network structures in real time, enhancing learning through clear, dynamic representation.</p>
             </div>
 
             <div className='diffline'></div>
 
             <div className="attack-2">
-              <h1>Sorting Visualising</h1>
+              <h1>Sorting's Visualising</h1>
               <p>
-                A Sorting Visualizer is an interactive tool designed to visually demonstrate how various sorting algorithms work, such as Bubble Sort, Merge Sort, Quick Sort, and Insertion Sort. By animating the step-by-step comparisons, swaps, and placements of elements, it helps users intuitively understand the inner mechanics of each algorithm. It’s especially useful for students and developers who want to grasp time and space complexity through visual learning.</p>
+                A Sorting Visualizer is an interactive tool designed to visually demonstrate how various sorting algorithms work, such as Bubble Sort, Merge Sort, Selection Sort, Quick Sort, and Insertion Sort. By animating the step-by-step comparisons, swaps, and placements of elements, it helps users intuitively understand the inner mechanics of each algorithm. It’s especially useful for students and developers who want to grasp time and space complexity through visual learning.</p>
             </div>
           </div>
 
         </div>
 
-        <div className='prevent-box'>
+        <div className='prevent-box' id='Learn'>
           <div className='prevent-content'>
-            <h1>How We Do Visualize?</h1>
+            <h1>How Do We Visualize?</h1>
             <ul class="protection-list">
               <li>
                 <strong>Task 1: Graph Visualizer</strong><br />
@@ -71,7 +71,7 @@ export default function Home() {
         </div>
 
 
-        <div className="user-card" id='about' >
+        <div className="user-card" id='Contributors' >
 
           <div className="user-content">
             <h1>Meet the Contributors</h1>

@@ -42,6 +42,19 @@ export default function Navebar() {
     }, []);
 
 
+    const handleContriClick = () => {
+        if (location.pathname === '/') {
+            changehamb(false);
+            setTimeout(() => {
+                changepopup(!popup);
+            }, 1);
+            const el = document.getElementById("Contributors");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        } else {
+            navigate("/", { state: { scrollToAbout: true } });
+        }
+        
+    };
     const handleAboutClick = () => {
         if (location.pathname === '/') {
             changehamb(false);
@@ -53,6 +66,7 @@ export default function Navebar() {
         } else {
             navigate("/", { state: { scrollToAbout: true } });
         }
+        
     };
 
     return (
@@ -70,8 +84,9 @@ export default function Navebar() {
                         </svg>
                     </div>
                     <li><Link className={location.pathname === "/" ? "highlight" : ""} to="/">Home</Link></li>
-                    <li><a onClick={handleAboutClick} >About</a></li>
+                     <li><a onClick={handleAboutClick} >About</a></li>
                     <li><Link className={location.pathname === "/visualize" ? "highlight" : ""} to="/visualize">Visualize</Link></li>
+                    <li><a onClick={handleContriClick} >Contributors</a></li>
                 </ul>
 
                 <svg onClick={Show_Nav_Links} className='hamburger' xmlns="http://www.w3.org/2000/svg"

@@ -71,6 +71,10 @@ export default function Home() {
         </div>
 
 
+
+
+
+
         <div className="user-card" id='Contributors' >
 
           <div className="user-content">
@@ -93,6 +97,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+
       </main>
     </>
   )

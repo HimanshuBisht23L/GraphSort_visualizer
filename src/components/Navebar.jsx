@@ -51,10 +51,11 @@ export default function Navebar() {
             const el = document.getElementById("Contributors");
             if (el) el.scrollIntoView({ behavior: "smooth" });
         } else {
-            navigate("/", { state: { scrollToAbout: true } });
+            navigate("/", { state: { scrollToContributor: true } });
         }
         
     };
+
     const handleAboutClick = () => {
         if (location.pathname === '/') {
             changehamb(false);

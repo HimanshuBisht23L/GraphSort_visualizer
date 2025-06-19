@@ -14,6 +14,13 @@ export default function Home() {
         el.scrollIntoView({ behavior: "smooth" });
       }
     }
+
+    if (location.state?.scrollToContributor) {
+      const el = document.getElementById("Contributors");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   }, [location]);
 
   return (
